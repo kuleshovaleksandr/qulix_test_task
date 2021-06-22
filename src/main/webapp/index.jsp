@@ -3,8 +3,11 @@
 
 <body>
 
-<h2>HELLO world</h2>
+<h2>Main menu</h2>
 
+<a href="/projects">Open all projects</a>
+<br><br>
+<a href="/tasks">Open all tasks</a>
 </body>
 
 </html>

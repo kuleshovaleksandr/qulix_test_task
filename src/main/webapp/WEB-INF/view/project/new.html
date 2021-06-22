@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New project</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/projects}" th:object="${project}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+    <label for="shortName">Enter short name: </label>
+    <input type="text" th:field="*{shortName}" id="shortName">
+    <br/>
+    <label for="describe">Enter describe: </label>
+    <input type="text" th:field="*{describe}" id="describe">
+    <br/>
+    <input type="submit" value="Create"/>
+</form>
+
+<a th:href="@{/projects}">
+    <input type="submit" value="Cancel"/>
+</a>
+
+</body>
+</html>

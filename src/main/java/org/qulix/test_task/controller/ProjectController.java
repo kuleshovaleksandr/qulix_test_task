@@ -1,15 +1,73 @@
 package org.qulix.test_task.controller;
 
+import org.qulix.test_task.dao.ProjectDao;
+import org.qulix.test_task.entity.Project;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/projects")
 public class ProjectController {
 
+    private final ProjectDao projectDao;
+
+    @Autowired
+    public ProjectController(ProjectDao projectDao) {
+        this.projectDao = projectDao;
+    }
+
     @GetMapping
-    public String getAllProjects() {
-        return "projects";
+    public String index(Model model) {
+        model.addAttribute("project", projectDao.findAll());
+        return "project/projects";
+    }
+
+    @GetMapping("/{id}")
+    public String show(@PathVariable("id") int id, Model model) {
+        model.addAttribute("project", projectDao.findById(id));
+        return "project/show";
+    }
+
+    @GetMapping("/new")
+    public String newPerson(@ModelAttribute("project") Project project) {
+        return "project/new";
+    }
+
+    @PostMapping
+    public String create(@ModelAttribute("project") @Valid Project project,
+                         BindingResult bindingResult) {
+        if(bindingResult.hasErrors())
+            return "project/new";
+
+        projectDao.create(project);
+        return "redirect:/projects";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") int id) {
+        model.addAttribute("project", projectDao.findById(id));
+        return "project/edit";
+    }
+
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("project") @Valid Project project,
+                         BindingResult bindingResult,
+                         @PathVariable("id") int id) {
+        if(bindingResult.hasErrors())
+            return "project/edit";
+
+        projectDao.update(id, project);
+        return "redirect:/projects";
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
+        projectDao.delete(id);
+        return "redirect:/projects";
     }
 }

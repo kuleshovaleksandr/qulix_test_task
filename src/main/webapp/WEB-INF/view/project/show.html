@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Project</title>
+</head>
+<body>
+<p th:text="'Id: ' + ${project.getId()}">VALUE</p>
+<p th:text="'Name: ' + ${project.getName()}">VALUE</p>
+<p th:text="'Short name: ' + ${project.getShortName()}">VALUE</p>
+<p th:text="'Describe: ' + ${project.getDescribe()}">VALUE</p>
+
+<a th:href="@{/projects/{id}/edit(id=${project.getId()})}">
+    <input type="submit" value="Edit"/>
+</a>
+
+<form th:method="DELETE" th:action="@{/projects/{id}(id=${project.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>
