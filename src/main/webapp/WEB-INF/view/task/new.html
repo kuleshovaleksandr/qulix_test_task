@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New task</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/tasks}" th:object="${task}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+    <label for="workTime">Enter work time: </label>
+    <input type="text" th:field="*{workTime}" id="workTime">
+    <br/>
+    <label for="startDate">Enter start date: </label>
+    <input type="text" th:field="*{startDate}" id="startDate">
+    <br/>
+    <label for="endDate">Enter end date: </label>
+    <input type="text" th:field="*{endDate}" id="endDate">
+    <br/>
+    <label for="status">Enter end date: </label>
+    <input type="text" th:field="*{status}" id="status">
+    <br/>
+    <label for="projectId">Enter end date: </label>
+    <input type="text" th:field="*{projectId}" id="projectId">
+    <br/>
+    <input type="submit" value="Create"/>
+</form>
+
+<a th:href="@{/tasks}">
+    <input type="submit" value="Cancel"/>
+</a>
+
+</body>
+</html>

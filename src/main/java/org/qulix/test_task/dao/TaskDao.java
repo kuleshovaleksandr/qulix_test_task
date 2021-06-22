@@ -10,9 +10,9 @@ public interface TaskDao {
 
     Task findById(Integer id);
 
-    Task update(Task task);
+    void update(Integer id, Task task);
 
-    Task create(Task task);
+    void create(Task task);
 
     void delete(Integer id);
 }

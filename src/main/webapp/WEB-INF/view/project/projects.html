@@ -10,19 +10,7 @@
         <a th:href="@{/projects/{id}(id=${project.getId()})}"
             th:text="${'Id: ' + project.getId() + '   Name: ' + project.getName() +
             '   Short name: ' + project.getShortName() + '   Describe: ' + project.getDescribe()}">project</a>
-        <br>
-        <br>
-<!--        <a th:href="@{/projects/edit}">-->
-<!--            <input type="submit" value="Edit"/>-->
-<!--        </a>-->
-
-<!--&lt;!&ndash;        <form th:method="POST" th:action="@{/projects/{id}/edit(id=${project.getId()})}">&ndash;&gt;-->
-<!--&lt;!&ndash;            <input type="submit" value="Edit"/>&ndash;&gt;-->
-<!--&lt;!&ndash;        </form>&ndash;&gt;-->
-
-<!--        <form th:method="DELETE" th:action="@{/projects/{id}(id=${project.getId()})}">-->
-<!--            <input type="submit" value="Delete"/>-->
-<!--        </form>-->
+        <br><br>
     </div>
 
     <br/>

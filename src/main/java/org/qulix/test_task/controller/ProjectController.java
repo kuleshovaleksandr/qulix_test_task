@@ -22,24 +22,24 @@ public class ProjectController {
     }
 
     @GetMapping
-    public String index(Model model) {
+    public String getAllProjects(Model model) {
         model.addAttribute("project", projectDao.findAll());
         return "project/projects";
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model) {
+    public String getProject(@PathVariable("id") int id, Model model) {
         model.addAttribute("project", projectDao.findById(id));
         return "project/show";
     }
 
     @GetMapping("/new")
-    public String newPerson(@ModelAttribute("project") Project project) {
+    public String createProject(@ModelAttribute("project") Project project) {
         return "project/new";
     }
 
     @PostMapping
-    public String create(@ModelAttribute("project") @Valid Project project,
+    public String saveProject(@ModelAttribute("project") @Valid Project project,
                          BindingResult bindingResult) {
         if(bindingResult.hasErrors())
             return "project/new";
@@ -49,13 +49,13 @@ public class ProjectController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id) {
+    public String editProject(Model model, @PathVariable("id") int id) {
         model.addAttribute("project", projectDao.findById(id));
         return "project/edit";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("project") @Valid Project project,
+    public String updateProject(@ModelAttribute("project") @Valid Project project,
                          BindingResult bindingResult,
                          @PathVariable("id") int id) {
         if(bindingResult.hasErrors())
@@ -66,7 +66,7 @@ public class ProjectController {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id) {
+    public String deleteProject(@PathVariable("id") int id) {
         projectDao.delete(id);
         return "redirect:/projects";
     }

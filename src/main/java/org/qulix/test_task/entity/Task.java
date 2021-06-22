@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.qulix.test_task.model.Status;
 
-//import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @Data
 @NoArgsConstructor
@@ -14,11 +14,13 @@ public class Task {
 
     private Integer id;
 
+    private String name;
+
     private Integer workTime;
 
-//    private LocalDateTime startTime;
-//
-//    private LocalDateTime endTime;
+    private Timestamp startDate;
+
+    private Timestamp endDate;
 
     private Status status;
 

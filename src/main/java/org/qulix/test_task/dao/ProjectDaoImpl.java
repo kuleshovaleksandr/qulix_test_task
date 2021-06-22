@@ -36,7 +36,6 @@ public class ProjectDaoImpl implements ProjectDao {
 
     @Override
     public void update(Integer id, Project project) {
-        final String UPDATE_SQL = "UPDATE projects SET name = ?, short_name = ?, describe = ? WHERE id = ?";
         jdbcTemplate.update("UPDATE projects SET name = ?, short_name = ?, describe = ? WHERE id = ?",
                 project.getName(), project.getShortName(), project.getDescribe(), id);
 //        KeyHolder keyHolder = new GeneratedKeyHolder();

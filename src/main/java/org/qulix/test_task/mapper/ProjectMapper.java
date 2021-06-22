@@ -1,4 +1,4 @@
-package org.qulix.test_task.dao;
+package org.qulix.test_task.mapper;
 
 import org.qulix.test_task.entity.Project;
 import org.springframework.jdbc.core.RowMapper;
