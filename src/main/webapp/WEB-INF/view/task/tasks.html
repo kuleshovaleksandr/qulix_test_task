@@ -6,6 +6,7 @@
     <title>Task</title>
 </head>
 <body>
+<h2>Tasks</h2>
 <div th:each="task : ${task}">
     <a th:href="@{/tasks/{id}(id=${task.getId()})}"
        th:text="${'Id: ' + task.getId() + '   Name: ' + task.getName()}">project</a>

@@ -1,13 +1,10 @@
 package org.qulix.test_task.controller;
 
-import org.qulix.test_task.dao.ProjectDao;
 import org.qulix.test_task.dao.TaskDao;
-import org.qulix.test_task.entity.Project;
 import org.qulix.test_task.entity.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -36,16 +33,12 @@ public class TaskController {
     }
 
     @GetMapping("/new")
-    public String createTask(@ModelAttribute("task") Project project) {
+    public String createTask(@ModelAttribute("task") Task task) {
         return "task/new";
     }
 
     @PostMapping
-    public String saveTask(@ModelAttribute("task") @Valid Task task,
-                         BindingResult bindingResult) {
-        if(bindingResult.hasErrors())
-            return "task/new";
-
+    public String saveTask(@ModelAttribute("task") @Valid Task task) {
         taskDao.create(task);
         return "redirect:/tasks";
     }
@@ -58,11 +51,7 @@ public class TaskController {
 
     @PatchMapping("/{id}")
     public String updateTask(@ModelAttribute("task") @Valid Task task,
-                         BindingResult bindingResult,
                          @PathVariable("id") int id) {
-        if(bindingResult.hasErrors())
-            return "task/edit";
-
         taskDao.update(id, task);
         return "redirect:/tasks";
     }

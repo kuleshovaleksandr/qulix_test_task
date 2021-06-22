@@ -13,7 +13,7 @@ public class Project {
 
     private String name;
 
-    private  String shortName;
+    private String shortName;
 
     private String describe;
 }

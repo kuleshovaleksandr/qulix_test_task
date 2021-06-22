@@ -7,8 +7,8 @@
 <body>
 
 <form th:method="POST" th:action="@{/projects}" th:object="${project}">
-    <label for="name">Enter name: </label>
-    <input type="text" th:field="*{name}" id="name">
+    <label for="projectName">Enter name: </label>
+    <input type="text" th:field="*{name}" id="projectName">
     <br/>
     <label for="shortName">Enter short name: </label>
     <input type="text" th:field="*{shortName}" id="shortName">

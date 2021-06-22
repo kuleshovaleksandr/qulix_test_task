@@ -5,7 +5,6 @@ import org.qulix.test_task.entity.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -39,11 +38,7 @@ public class ProjectController {
     }
 
     @PostMapping
-    public String saveProject(@ModelAttribute("project") @Valid Project project,
-                         BindingResult bindingResult) {
-        if(bindingResult.hasErrors())
-            return "project/new";
-
+    public String saveProject(@ModelAttribute("project") @Valid Project project) {
         projectDao.create(project);
         return "redirect:/projects";
     }
@@ -56,11 +51,7 @@ public class ProjectController {
 
     @PatchMapping("/{id}")
     public String updateProject(@ModelAttribute("project") @Valid Project project,
-                         BindingResult bindingResult,
                          @PathVariable("id") int id) {
-        if(bindingResult.hasErrors())
-            return "project/edit";
-
         projectDao.update(id, project);
         return "redirect:/projects";
     }
