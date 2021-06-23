@@ -9,7 +9,7 @@ https://www.postgresql.org/download/
 5) В Intellij IDEA создать проект с имеющегося репозитория: **File -> New -> Project from Version Control**. 
 6) Скачать и распаковать контейнер серверов **TomCat** по ссылке
 https://ftp.byfly.by/pub/apache.org/tomcat/tomcat-9/v9.0.48/bin/apache-tomcat-9.0.48.zip
-7) После создания проекта в Intellij IDEA перейти в меню **Edit configurations...** для настройки **TomCat**
+7) После создания проекта в Intellij IDEA перейти в меню **Edit configurations...** для настройки **TomCat**:
     + **Add new configuration -> TomCat Server Local**;
     + указать путь к папке с распакованым **TomCat**;
     + нажать на кнопку **Fix** и выбрать артефакт *qulix_test_task:war exploded*;
